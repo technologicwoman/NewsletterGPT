@@ -81,7 +81,7 @@ def send_summary_email(service, summaries):
         email_content += f"\nFrom {sender}:\n{summary}\n"
     
     message = MIMEText(email_content)
-    message['to'] = 'summarygen8@gmail.com'  # Your verified email
+    message['to'] = os.getenv('SUMMARY_EMAIL')  # Your verified email
     message['subject'] = f'Newsletter Summaries - {date_str}'
     
     raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode('utf-8')
